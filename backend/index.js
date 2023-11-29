@@ -24,7 +24,7 @@ admin.initializeApp({
 
 app.use(
     cors({
-        origin:'http://localhost:5173'
+        origin:'https://stripe-frontend-nine.vercel.app'
     })
 )
 
@@ -44,8 +44,8 @@ const stripeSession = async(plan) => {
                     quantity: 1
                 },
             ],
-            success_url: 'http://localhost:5173/success',
-            cancel_url: 'http://localhost:5173/cancel'
+            success_url: 'https://stripe-frontend-nine.vercel.app/success',
+            cancel_url: 'https://stripe-frontend-nine.vercel.app/cancel'
         });
         return session;
     }catch (e){

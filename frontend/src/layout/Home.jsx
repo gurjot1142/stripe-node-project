@@ -49,7 +49,7 @@ const Home = () => {
   }, [userId]);
 
   const checkout = (plan) => {
-    fetch("http://localhost:5000/api/v1/create-subscription-checkout-session", {
+    fetch("https://stripe-backend-project.vercel.app/api/v1/create-subscription-checkout-session", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

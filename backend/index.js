@@ -91,7 +91,9 @@ app.post("/api/v1/payment-success", async (req, res) => {
             const subscription = await stripe.subscriptions.retrieve(subscriptionId);
             const user = await admin.auth().getUser(firebaseId);
             const planId = subscription.plan.id;
-            const planType = subscription.plan.amount === 50000 ? "basic" : "pro";
+            if(subscription.plan.amount === 9900) planType = "basic";
+            else if(subscription.plan.amount === 49900) planType = "pro";
+            else if(subscription.plan.amount === 99900) planType = "business";
             const startDate = moment.unix(subscription.current_period_start).format('YYYY-MM-DD');
             const endDate = moment.unix(subscription.current_period_end).format('YYYY-MM-DD');
             const durationInSeconds = subscription.current_period_end - subscription.current_period_start;
